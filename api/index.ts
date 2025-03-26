@@ -1,10 +1,10 @@
-import Connection from './models/connection';
-import ExpressConfig from './config/express';
-import userRouter from './routes/users.routes';
-import newsRouter from './routes/news.routes';
-import cloudinary from './config/cloudinary';
-import lecturesRouter from './routes/lectures.routes';
-import podcastsRouter from './routes/podcasts.routes';
+import Connection from '../src/models/connection';
+import ExpressConfig from '../src/config/express';
+import userRouter from '../src/routes/users.routes';
+import newsRouter from '../src/routes/news.routes';
+import cloudinary from '../src/config/cloudinary';
+import lecturesRouter from '../src/routes/lectures.routes';
+import podcastsRouter from '../src/routes/podcasts.routes';
 class App{
     private app = ExpressConfig.getExpress();
     private port = process.env.PORT;

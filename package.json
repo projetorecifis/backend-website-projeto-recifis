@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.ts",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "npx tsx api/index.ts",
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "watch": "tsc --watch"
