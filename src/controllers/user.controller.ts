@@ -4,10 +4,6 @@ import { Request, Response } from 'express';
 
 
 class UserController{
-    // public async getTeste(req:Request, res:Response) :Promise<any>{
-    //     const response = await UserServices.singUpUser();
-    //     return res.json(response);
-    // }
     public async signInUser(req:Request, res:Response) :Promise<any>{
         const body = req.body;
         const response = await UserServices.signInUser(body);

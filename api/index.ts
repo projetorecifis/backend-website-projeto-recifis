@@ -5,6 +5,7 @@ import newsRouter from '../src/routes/news.routes';
 import cloudinary from '../src/config/cloudinary';
 import lecturesRouter from '../src/routes/lectures.routes';
 import podcastsRouter from '../src/routes/podcasts.routes';
+import testrouter from '../src/routes/test.routes';
 class App{
     private app = ExpressConfig.getExpress();
     private port = process.env.PORT;
@@ -32,6 +33,7 @@ class App{
         this.app.use('/news', newsRouter)
         this.app.use('/lectures', lecturesRouter)
         this.app.use('/podcasts', podcastsRouter)
+        this.app.use("/test", testrouter)
     }
 }
 

@@ -4,7 +4,7 @@
   "main": "app.ts",
   "scripts": {
     "start": "npx tsx api/index.ts",
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx watch api/index.ts",
     "build": "tsc",
     "watch": "tsc --watch"
   },
