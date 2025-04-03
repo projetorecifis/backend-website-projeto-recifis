@@ -4,6 +4,19 @@ import { Request, Response } from 'express';
 
 
 class UserController{
+    public async getAllUsers(req:Request, res:Response) :Promise<any>{
+        const response = await UserServices.getAllUsers();
+        
+        const middleware = new Middleware();
+        const verifyResponse = middleware.verifyResponse(response);
+
+        const formatResponse = middleware.formatResponse(verifyResponse);
+
+        console.log("formatResponse:::", formatResponse);
+
+        return res.status(formatResponse.status).json(formatResponse);
+    }
+
     public async signInUser(req:Request, res:Response) :Promise<any>{
         const body = req.body;
         const response = await UserServices.signInUser(body);
@@ -13,7 +26,7 @@ class UserController{
 
         const formatResponse = middleware.formatResponse(verifyResponse);
 
-        console.log(formatResponse);
+        console.log("formatResponse:::", formatResponse);
 
         return res.status(formatResponse.status).json(formatResponse);
     }
@@ -27,7 +40,21 @@ class UserController{
 
         const formatResponse = middleware.formatResponse(verifyResponse);
 
-        console.log(formatResponse);
+        console.log("formatResponse:::", formatResponse);
+
+        return res.status(formatResponse.status).json(formatResponse);
+    }
+
+    public async deleteUser(req:Request, res:Response) :Promise<any>{
+        const { id } = req.params;
+        const response = await UserServices.deleteUser(id);
+        
+        const middleware = new Middleware();
+        const verifyResponse = middleware.verifyResponse(response);
+
+        const formatResponse = middleware.formatResponse(verifyResponse);
+
+        console.log("formatResponse:::", formatResponse);
 
         return res.status(formatResponse.status).json(formatResponse);
     }
