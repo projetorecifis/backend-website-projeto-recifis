@@ -50,7 +50,10 @@ class NewsRespositories{
             title: body.title,
             subtitle: body.subtitle,
             text: body.text,
+            updatedAt: new Date().toISOString(),
             createdAt: new Date().toISOString(),
+            isInTop: body.isInTop,
+            link: body?.link || undefined,
             image: {
                 originalName: fileFromCloudinary?.original_filename,
                 path: fileFromCloudinary?.secure_url,
@@ -76,6 +79,9 @@ class NewsRespositories{
                     title: body?.title,
                     subtitle: body?.subtitle,
                     text: body?.text,
+                    isInTop: body?.isInTop,
+                    link: body?.link,
+                    updatedAt: new Date().toISOString(),
                     image: {
                         originalName: fileFromCloudinary?.original_filename,
                         path: fileFromCloudinary?.secure_url,
@@ -85,14 +91,17 @@ class NewsRespositories{
                         versionId: fileFromCloudinary?.version,
                         signature: fileFromCloudinary?.signature,
                         createdAt: fileFromCloudinary?.created_at
-                    }
+                    },
                 });
                 return response;
             }
             const response = await NewsModel.findOneAndUpdate({_id: id}, {
                 title: body?.title,
                 subtitle: body?.subtitle,
-                text: body?.text
+                text: body?.text,
+                isInTop: body?.isInTop,
+                link: body?.link,
+                updatedAt: new Date().toISOString(),
             });
 
             return response
