@@ -49,6 +49,7 @@ class PodcastsRespositories{
             title: body.title,
             description: body.description,
             createdAt: new Date().toISOString(),
+            speakers: body.speakers,
             link: body.link,
             image: {
                 originalName: fileFromCloudinary?.original_filename,
@@ -74,6 +75,8 @@ class PodcastsRespositories{
                     title: body?.title,
                     description: body?.description,
                     link: body?.link,
+                    speakers: body?.speakers,
+                    updatedAt: new Date().toISOString(),
                     image: {
                         originalName: fileFromCloudinary?.original_filename,
                         path: fileFromCloudinary?.secure_url,
@@ -90,6 +93,8 @@ class PodcastsRespositories{
             const response = await PodcastsModel.findOneAndUpdate({_id: id}, {
                 title: body?.title,
                 description: body?.description,
+                updatedAt: new Date().toISOString(),
+                speakers: body?.speakers,
                 link: body?.link,
             });
 

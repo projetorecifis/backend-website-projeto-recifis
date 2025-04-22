@@ -7,7 +7,7 @@ const userRouter = Router();
 
 userRouter.post('/signin', UserController.signInUser);
 userRouter.post('/signup', UserController.signUpUser);
-userRouter.get('/getAll', jwt.verifyJWT, UserController.getAllUsers);
+userRouter.get('/getAll', UserController.getAllUsers);
 userRouter.delete('/delete/:id', jwt.verifyJWT, UserController.deleteUser);
 // userRouter.get('/auth/verify', verifyJWT, usuarioController.verifyAuth)
 

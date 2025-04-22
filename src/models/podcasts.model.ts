@@ -5,6 +5,8 @@ interface IPodcasts extends Document {
     title: string;
     description: string;
     link: string;
+    updatedAt: string;
+    speakers: string[];
     createdAt: string;
     image: IImage;
 }
@@ -17,6 +19,14 @@ const podcastsSchema = new Schema<IPodcasts>({
     description:{
         type: String,
         required: true
+    },
+    speakers:{
+        type: [String],
+        required: true
+    },
+    updatedAt:{
+        type: String,
+        required: false
     },
     createdAt:{
         type: String,
