@@ -18,6 +18,7 @@ export interface IPostLectureBodyRequest{
     link: string;
     image: IImage;
     oldImage?: string;
+    isInCarousel: string;
 }
 
 export interface IGetAllLecturesDataResponse{
@@ -28,6 +29,7 @@ export interface IGetAllLecturesDataResponse{
     createdAt: string;
     speakers: string;
     image: IImage;
+    isInCarousel: string;
 };
 
 export interface IGetAllLecturesResponse{
