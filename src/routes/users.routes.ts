@@ -6,9 +6,10 @@ import jwt from '../middleware/jwt';
 const userRouter = Router();
 
 userRouter.post('/signin', UserController.signInUser);
-userRouter.post('/signup', UserController.signUpUser);
 userRouter.get('/getAll', UserController.getAllUsers);
+
+userRouter.post('/signup', jwt.verifyJWT, UserController.signUpUser);
+userRouter.put('/update/:id', jwt.verifyJWT, UserController.updateUser);
 userRouter.delete('/delete/:id', jwt.verifyJWT, UserController.deleteUser);
-// userRouter.get('/auth/verify', verifyJWT, usuarioController.verifyAuth)
 
 export default userRouter;

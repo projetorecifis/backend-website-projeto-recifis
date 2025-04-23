@@ -46,7 +46,21 @@ class UsersRepositories{
         if(!response){
             throw new Error("User not found");
         }
-        return response
+        return response;
+    }
+
+    async updateUser(id: string, user: any){
+        const response = await UsersModel.findOneAndUpdate({_id: id}, {
+            name: user?.name,
+            email: user?.email,
+            isAdmin: user?.isAdmin,
+            updatedAt: new Date().toISOString()
+        });
+        
+        if(!response){
+            throw new Error("User not found");
+        }
+        return response;
     }
 
 }
