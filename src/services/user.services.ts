@@ -114,6 +114,23 @@ class UserServices{
             return { errorType: 'GENERIC-ERROR' }
         }
     }
+
+    public async updateUser(id: string, body: any){
+        try{
+            const response = await UserRepositories.updateUser(id, body);
+            if(response instanceof Error){
+                return { errorType: 'MONGODB-ERROR' }
+            }
+            return {
+                status: 200,
+                message: "User updated successfully",
+                data: response
+            }
+        }catch(error){
+            console.log(error);
+            return { errorType: 'GENERIC-ERROR' }
+        }
+    }
         // public async getUserByEmail(email: string){
     //     try{
     //         if(email){

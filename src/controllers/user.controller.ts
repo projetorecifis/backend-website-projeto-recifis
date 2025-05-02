@@ -59,6 +59,21 @@ class UserController{
         return res.status(formatResponse.status).json(formatResponse);
     }
 
+    public async updateUser(req:Request, res:Response) :Promise<any>{
+        const { id } = req.params;
+        const body = req.body;
+        const response = await UserServices.updateUser(id, body);
+        
+        const middleware = new Middleware();
+        const verifyResponse = middleware.verifyResponse(response);
+
+        const formatResponse = middleware.formatResponse(verifyResponse);
+
+        console.log("formatResponse:::", formatResponse);
+
+        return res.status(formatResponse.status).json(formatResponse);
+    }
+
     // public async verifyAuth(req:Request, res:Response) :Promise< UserInterface | any>{
     //     res.json({error: false, message: "Autenticado com sucesso!"})
     // }
