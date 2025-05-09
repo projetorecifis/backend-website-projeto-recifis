@@ -10,7 +10,8 @@ class JWT{
             id: data._id,
             isAdmin: data.isAdmin,
             },"JWT_KEY-SECRET-KEY-07022002",{
-            expiresIn: "1800000" // 30 minutos
+            expiresIn: '24h'
+         
         })
 
         return token
