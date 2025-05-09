@@ -18,25 +18,28 @@ class ExpressConfig{
     }
     
     private middlewares():void{
-        console.log(process.env.WEBSITE_RECIFIS_PROD);
-        if(process.env.WEBSITE_RECIFIS_PROD !== undefined){
-            const corsOptions = {
-                origin: process.env.WEBSITE_RECIFIS_PROD,
-                methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
-                allowedHeaders: ['Content-Type', 'Authorization'],
-                credentials: true
-              };
-            
-              this.express.use(cors(corsOptions))
-
-              this.express.options('*', cors(corsOptions));
-
-              console.log("CORS enabled for production");
-        }
-
         this.express.use(morgan('dev'))
         this.express.use(bodyParser.urlencoded({ extended: true }))
         this.express.use(bodyParser.json())
+
+        // console.log(process.env.WEBSITE_RECIFIS_PROD);
+        // if(process.env.WEBSITE_RECIFIS_PROD !== undefined){
+        //     const corsOptions = {
+        //         origin: process.env.WEBSITE_RECIFIS_PROD,
+        //         methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
+        //         allowedHeaders: ['Content-Type', 'Authorization'],
+        //         credentials: true
+        //       };
+            
+        //       this.express.use(cors(corsOptions))
+
+        //       this.express.options('*', cors(corsOptions));
+
+        //       console.log("CORS enabled for production");
+        // }
+
+        this.express.use(cors()); 
+        this.express.options('*', cors());
 
         this.express.use((req, res, next) => {
             console.log('Incoming request method:', req.method);
