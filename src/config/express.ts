@@ -6,6 +6,7 @@ import dotenv from 'dotenv'
 
 class ExpressConfig{
     private express: express.Application
+    
 
     constructor(){
         dotenv.config();
@@ -24,8 +25,18 @@ class ExpressConfig{
 
         console.log(process.env.WEBSITE_RECIFIS_PROD);
         if(process.env.WEBSITE_RECIFIS_PROD !== undefined){
+            const allowedOrigins = [
+                process.env.WEBSITE_RECIFIS_PROD,
+                'http://localhost:3000'
+              ]
             const corsOptions = {
-                origin: process.env.WEBSITE_RECIFIS_PROD,
+                origin: function (origin: any, callback: any) {
+                    if (!origin || allowedOrigins.includes(origin)) {
+                      callback(null, true)
+                    } else {
+                      callback(new Error('Not allowed by CORS'))
+                    }
+                  },
                 methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
                 allowedHeaders: ['Content-Type', 'Authorization'],
                 credentials: true
