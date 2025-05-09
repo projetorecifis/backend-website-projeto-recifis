@@ -16,6 +16,8 @@ class Connection{
             dbName: process.env.DB_NAME,
           });
           console.log("Connected to MongoDB!");
+          console.log(process.env.DB_NAME);
+          console.log(this.db.connection.db);
           return "Pinged your deployment. You successfully connected to MongoDB!"
         }
         throw Error("Url not found - MongoDB");
