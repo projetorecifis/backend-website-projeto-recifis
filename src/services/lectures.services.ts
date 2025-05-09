@@ -82,7 +82,7 @@ class LecturesServices{
             const file = req?.file;
             const body: IPostLectureBodyRequest = req.body;
             const { id } = req.params;
-
+            console.log("body", body)
             if(file){
                 const cloudinaryResponse = await cloudinary.uploadImage(file);
 

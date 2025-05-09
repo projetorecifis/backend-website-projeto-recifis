@@ -16,6 +16,8 @@ export interface IPostNewBodyRequest{
     subtitle: string;
     text: string;
     image: IImage;
+    isInTop: string;
+    link?: string;
 }
 
 export interface IGetAllNewsDataResponse{
@@ -25,6 +27,8 @@ export interface IGetAllNewsDataResponse{
     text: string;
     createdAt: string;
     image: IImage;
+    isInTop: boolean;
+    link?: string;
 };
 
 export interface IGetAllNewsResponse{

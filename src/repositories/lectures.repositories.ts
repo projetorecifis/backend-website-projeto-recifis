@@ -51,6 +51,7 @@ class LecturesRespositories{
             createdAt: new Date().toISOString(),
             speakers: body.speakers,
             link: body.link,
+            isInCarousel: body.isInCarousel,
             image: {
                 originalName: fileFromCloudinary?.original_filename,
                 path: fileFromCloudinary?.secure_url,
@@ -77,6 +78,7 @@ class LecturesRespositories{
                     description: body?.description,
                     speakers: body?.speakers,
                     link: body?.link,
+                    isInCarousel: body?.isInCarousel,
                     image: {
                         originalName: fileFromCloudinary?.original_filename,
                         path: fileFromCloudinary?.secure_url,
@@ -95,6 +97,7 @@ class LecturesRespositories{
                 description: body?.description,
                 speakers: body?.speakers,
                 link: body?.link,
+                isInCarousel: body?.isInCarousel,
             });
 
             return response

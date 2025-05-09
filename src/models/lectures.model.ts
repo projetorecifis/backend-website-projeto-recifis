@@ -8,6 +8,7 @@ interface ILectures extends Document {
     link: string;
     createdAt: string;
     image: IImage;
+    isInCarousel: string;
 }
 
 const lectureSchema = new Schema<ILectures>({
@@ -21,6 +22,10 @@ const lectureSchema = new Schema<ILectures>({
     },
     speakers:{
         type: [String],
+        required: true
+    },
+    isInCarousel:{
+        type: String,
         required: true
     },
     link:{

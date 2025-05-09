@@ -7,6 +7,9 @@ interface INews extends Document {
     text: string;
     createdAt: string;
     image: IImage;
+    isInTop: string;
+    link?: string;
+    updatedAt: string;
 }
 
 const newsSchema = new Schema<INews>({
@@ -22,7 +25,19 @@ const newsSchema = new Schema<INews>({
         type: String,
         required: true
     },
+    isInTop:{
+        type: String,
+        required: true
+    },
+    link:{
+        type: String,
+        required: false
+    },
     createdAt:{
+        type: String,
+        required: true
+    },
+    updatedAt:{
         type: String,
         required: true
     },

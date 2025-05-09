@@ -4,7 +4,24 @@ import bcrypt from 'bcrypt'
 import JWT from '../middleware/jwt'
 import UserRepositories from "../repositories/users.repositories";
 
-class UserServices{   
+class UserServices{  
+    
+    public async getAllUsers(){
+        try{
+            const response = await UserRepositories.getAllUsers();
+            if(response instanceof Error){
+                return { errorType: 'MONGODB-ERROR' }
+            }
+            return {
+                status: 200,
+                message: "Users found",
+                data: response
+            }
+        }catch(error){
+            console.log(error);
+            return { errorType: 'GENERIC-ERROR' }
+        }
+    }
 
     public async signUpUser(body: any){
         try{
@@ -22,10 +39,10 @@ class UserServices{
                 email: body?.email,
                 password: newPassword,
                 name: body?.name,
-                isAdmin: false,
+                isAdmin: body?.isAdmin || false,
                 createdAt: new Date().toISOString()
             }
-            console.log("user", user)
+            
             const responseCreateUser = await UserRepositories.createUser(user);
  
             if(responseCreateUser instanceof Error){
@@ -77,6 +94,40 @@ class UserServices{
             }
 
         }catch(error){
+            return { errorType: 'GENERIC-ERROR' }
+        }
+    }
+
+    public async deleteUser(id: string){
+        try{
+            const response = await UserRepositories.deleteUser(id);
+            if(response instanceof Error){
+                return { errorType: 'MONGODB-ERROR' }
+            }
+            return {
+                status: 200,
+                message: "User deleted successfully",
+                data: response
+            }
+        }catch(error){
+            console.log(error);
+            return { errorType: 'GENERIC-ERROR' }
+        }
+    }
+
+    public async updateUser(id: string, body: any){
+        try{
+            const response = await UserRepositories.updateUser(id, body);
+            if(response instanceof Error){
+                return { errorType: 'MONGODB-ERROR' }
+            }
+            return {
+                status: 200,
+                message: "User updated successfully",
+                data: response
+            }
+        }catch(error){
+            console.log(error);
             return { errorType: 'GENERIC-ERROR' }
         }
     }

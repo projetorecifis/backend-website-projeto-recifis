@@ -8,7 +8,7 @@ import path from "path";
 import fs from "fs";
 import mime from "mime";
 
-const MAX_MEGABYTES = 1;
+const MAX_MEGABYTES = 1.50; //Tamanho máximo do arquivo em MB
 
 class UploadAvatar {
     //Pasta para onde será feito o Upload
