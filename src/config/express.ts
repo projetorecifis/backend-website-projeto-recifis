@@ -23,7 +23,6 @@ class ExpressConfig{
             const corsOptions = {
                 origin: [process.env.WEBSITE_RECIFIS_PROD],
                 methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
-                credentials: true,
                 allowedHeaders: ['Content-Type, Authorization']
               };
             
