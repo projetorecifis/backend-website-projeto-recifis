@@ -1,8 +1,7 @@
 import { UploadApiResponse } from "cloudinary";
 import NewsModel from "../models/news.model";
-import ImageModel from "../models/lectures.model";
 import { IPostNewBodyRequest } from "../services/interfaces/news.interface";
-import { GenericError } from "../helpers/api-errors";
+
 class NewsRespositories{    
     async getAllNews(skip: number, limit: number, page: number): Promise<any>{
         try{
