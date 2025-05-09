@@ -23,10 +23,13 @@ class ExpressConfig{
             const corsOptions = {
                 origin: process.env.WEBSITE_RECIFIS_PROD,
                 methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
-                allowedHeaders: ['Content-Type', 'Authorization']
+                allowedHeaders: ['Content-Type', 'Authorization'],
+                credentials: true
               };
             
               this.express.use(cors(corsOptions))
+
+              this.express.options('*', cors(corsOptions));
 
               console.log("CORS enabled for production");
         }
