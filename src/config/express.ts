@@ -37,6 +37,13 @@ class ExpressConfig{
         this.express.use(morgan('dev'))
         this.express.use(bodyParser.urlencoded({ extended: true }))
         this.express.use(bodyParser.json())
+
+        this.express.use((req, res, next) => {
+            console.log('Incoming request method:', req.method);
+            console.log('Origin:', req.headers.origin);
+            console.log('Access-Control-Request-Headers:', req.headers['access-control-request-headers']);
+            next();
+        });
         
         
     }
