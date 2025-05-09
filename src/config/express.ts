@@ -18,10 +18,21 @@ class ExpressConfig{
     }
     
     private middlewares():void{
+        if(process.env.WEBSITE_RECIFIS_PROD !== undefined){
+            const corsOptions = {
+                origin: [process.env.WEBSITE_RECIFIS_PROD],
+                methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
+                credentials: true,
+                allowedHeaders: ['Content-Type, Authorization']
+              };
+            
+              this.express.use(cors(corsOptions))
+        }
+
         this.express.use(morgan('dev'))
         this.express.use(bodyParser.urlencoded({ extended: true }))
         this.express.use(bodyParser.json())
-        this.express.use(cors())
+        
         
     }
 }
