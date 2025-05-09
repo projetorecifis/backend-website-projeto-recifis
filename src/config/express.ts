@@ -18,6 +18,7 @@ class ExpressConfig{
     }
     
     private middlewares():void{
+        console.log(process.env.WEBSITE_RECIFIS_PROD);
         if(process.env.WEBSITE_RECIFIS_PROD !== undefined){
             const corsOptions = {
                 origin: [process.env.WEBSITE_RECIFIS_PROD],
