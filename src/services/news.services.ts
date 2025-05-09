@@ -54,7 +54,7 @@ class NewsServices{
             const file = req?.file;
             const body: IPostNewBodyRequest = req.body;
 
-            console.log(body)
+            console.log("file::", file);
 
             if(file){
                 const cloudinaryResponse = await cloudinary.uploadImage(file);
@@ -76,6 +76,7 @@ class NewsServices{
 
             return { errorType: 'FILE-NOT-FOUND' }
         }catch(error){
+            console.log("error post-news-services::", error);
             return { errorType: 'GENERIC-ERROR' }
         }
     }
