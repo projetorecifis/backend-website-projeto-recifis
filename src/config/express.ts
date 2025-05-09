@@ -21,12 +21,14 @@ class ExpressConfig{
         console.log(process.env.WEBSITE_RECIFIS_PROD);
         if(process.env.WEBSITE_RECIFIS_PROD !== undefined){
             const corsOptions = {
-                origin: [process.env.WEBSITE_RECIFIS_PROD],
+                origin: process.env.WEBSITE_RECIFIS_PROD,
                 methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
                 allowedHeaders: ['Content-Type, Authorization']
               };
             
               this.express.use(cors(corsOptions))
+
+              console.log("CORS enabled for production");
         }
 
         this.express.use(morgan('dev'))
